@@ -7,18 +7,16 @@ redirect_from:
 
 [Snowflake](https://docs.snowflake.net/manuals/index.html) is a data warehouse built for the cloud. Snowflake delivers performance, simplicity, concurrency and affordability.
 
-This document was last updated on January 29, 2018. If you notice any gaps, out-dated information or simply want to leave some feedback to help us improve our documentation, [let us know](https://segment.com/help/contact)!
-
 ## Getting Started
 
 There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`. While we are using predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
 
-1. Create Virtual Warehouse
-2. Create Database
-3. Create Role for Segment
-4. Create User for Segment
-5. Test the User and Credentials
-6. Connect Snowflake to Segment
+1. [Create Virtual Warehouse](#create-virtual-warehouse)
+2. [Create Database](#create-database)
+3. [Create Role for Segment](#create-role-for-segment)
+4. [Create User for Segment](#create-user-for-segment)
+5. [Test the User and Credentials](#test-the-user-and-credentials)
+6. [Connect Snowflake to Segment](#connect-snowflake-to-segment)
 
 ### Create Virtual Warehouse
 
@@ -50,7 +48,7 @@ CREATE DATABASE "SEGMENT_EVENTS";
 
 You need to run these commands rather than creating a role with the "Create Role" dialog in the UI.
 
-This role will be attached to Segment's user and it gives just enough permissions for loading data in your database. We recommend not reusing this role for other operations.
+This role will be attached to Segment's user and it gives just enough permissions for loading data in your database. Segment recommends not reusing this role for other operations.
 
 1. Click on to Worksheets;
 2. Select SEGMENT_EVENTS under database objects
