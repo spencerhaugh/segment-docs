@@ -9,7 +9,7 @@ redirect_from:
 
 ## Getting Started
 
-There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`. While we are using predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
+There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`. While the following examples use predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
 
 1. [Create Virtual Warehouse](#create-virtual-warehouse)
 2. [Create Database](#create-database)
@@ -22,7 +22,7 @@ There are six steps to get started using Snowflake with Segment. Make sure that 
 
 The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data in to. To avoid conflicts with other regular operations in your cluster, we recommend creating a new warehouse just for Segment loads, but this is not mandatory. An X-Small warehouse works for most customers when starting.
 
-![](images/create_virtual_warehouse.png)
+![](images/create_virtual_warehouse.png) --->
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
@@ -50,7 +50,7 @@ You need to run these commands rather than creating a role with the "Create Role
 
 This role will be attached to Segment's user and it gives just enough permissions for loading data in your database. Segment recommends not reusing this role for other operations.
 
-1. Click on to Worksheets;
+1. Click on **Worksheets**
 2. Select SEGMENT_EVENTS under database objects
 3. Change role to ACCOUNTADMIN
 
