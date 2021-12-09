@@ -22,7 +22,9 @@ There are six steps to get started using Snowflake with Segment. Make sure that 
 
 The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data in to. To avoid conflicts with other regular operations in your cluster, we recommend creating a new warehouse just for Segment loads, but this is not mandatory. An X-Small warehouse works for most customers when starting.
 
-![](images/create_virtual_warehouse.png) --->
+To create a warehouse using the UI, 
+
+![](images/create_virtual_warehouse.png)
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
