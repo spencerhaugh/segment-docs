@@ -9,7 +9,7 @@ redirect_from:
 
 ## Getting Started
 
-There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS`. While the following examples use predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
+There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS` permissions. While the following examples use predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
 
 1. [Create Virtual Warehouse](#create-virtual-warehouse)
 2. [Create Database](#create-database)
@@ -20,11 +20,13 @@ There are six steps to get started using Snowflake with Segment. Make sure that 
 
 ### Create Virtual Warehouse
 
-The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data in to. To avoid conflicts with other regular operations in your cluster, we recommend creating a new warehouse just for Segment loads, but this is not mandatory. An X-Small warehouse works for most customers when starting.
+The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data into. To avoid conflicts with other regular operations in your cluster, Segment recommends creating a new warehouse just for Segment loads, but this is not mandatory. An X-Small sized warehouse works for most customers when starting.
 
 To create a warehouse using the UI, 
 
 ![](images/create_virtual_warehouse.png)
+
+To create a warehouse using SQL, copy the following code snippet into
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
@@ -34,7 +36,8 @@ CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
     AUTO_RESUME = TRUE;
 ```
 
-Make sure `AUTO_SUSPEND` is set to ~10 minutes in the UI (or 600 if using SQL) and `AUTO_RESUME` is enabled, to avoid extra costs.
+> warning " "
+> Make sure you set `AUTO_SUSPEND` to 10 minutes in the UI (or 600 if using SQL) and enable `AUTO_RESUME` to avoid extra costs.
 
 ### Create Database
 
