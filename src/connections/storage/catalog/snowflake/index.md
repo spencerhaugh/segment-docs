@@ -9,7 +9,7 @@ redirect_from:
 
 ## Getting Started
 
-There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS` permissions. While the following examples use predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
+There are six steps to get started using Snowflake with Segment. Make sure that you are running the commands in each step while logged in as an `ACCOUNTADMIN`, or an account that has `MANAGE GRANTS` permission. While the following examples use predefined user (`SEGMENT_USER`), role (`SEGMENT`), warehouse (`SEGMENT_WAREHOUSE`) and database (`SEGMENT_EVENTS`) names, you can use any names you like.
 
 1. [Create Virtual Warehouse](#create-virtual-warehouse)
 2. [Create Database](#create-database)
@@ -20,13 +20,27 @@ There are six steps to get started using Snowflake with Segment. Make sure that 
 
 ### Create Virtual Warehouse
 
-The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data into. To avoid conflicts with other regular operations in your cluster, Segment recommends creating a new warehouse just for Segment loads, but this is not mandatory. An X-Small sized warehouse works for most customers when starting.
+The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data into. To avoid conflicts with other regular operations in your cluster, Segment recommends creating a new warehouse just for Segment loads, but this is not mandatory. 
 
-To create a warehouse using the UI, 
+> warning " "
+> Make sure you set `AUTO_SUSPEND` to 10 minutes in the UI (or 600 if using SQL) and enable `AUTO_RESUME` to avoid extra costs.
+
+To create a warehouse using the UI:
+1. Select the **Create...** button on the Warehouses panel. 
+2. In the Create Warehouse dialog, enter a name for your warehouse and select the following options:
+  -  A size for your warehouse (An X-Small warehouse works for most customers)
+  -  Set Auto Suspend to 10
+  -  Select **Auto Resume**
+  -  You can also select a maximum/minimum number of clusters and a scaling policy, if needed. 
+3. When you've made all of the necessary selections, click **Finish**.
 
 ![](images/create_virtual_warehouse.png)
 
-To create a warehouse using SQL, copy the following code snippet into
+To create a warehouse using SQL:
+1. Select the **Create...** button on the Warehouses panel. 
+2. In the Create Warehouse dialog, enter a name for your warehouse and select **Show SQL**.
+3. Copy the following code snippet into your terminal. You can also add a `MIN_CLUSTER_COUNT`, `MAX_CLUSTER_COUNT`, and `SCALING_POLICY`, if needed. 
+<!--- fact-check where you would put this code to create a warehouse using SQL --->
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
@@ -35,9 +49,6 @@ CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
     AUTO_SUSPEND = 600
     AUTO_RESUME = TRUE;
 ```
-
-> warning " "
-> Make sure you set `AUTO_SUSPEND` to 10 minutes in the UI (or 600 if using SQL) and enable `AUTO_RESUME` to avoid extra costs.
 
 ### Create Database
 
@@ -97,7 +108,7 @@ GRANT ROLE "SEGMENT" TO USER "SEGMENT_USER";
 
 Before you continue, test and validate the new user and credentials. When you can run the following commands successfully, you can connect Snowflake to Segment.
 
-We use [snowsql](https://docs.snowflake.net/manuals/user-guide/snowsql.html) to run these verification steps.
+Segment uses [snowsql](https://docs.snowflake.net/manuals/user-guide/snowsql.html) to run these verification steps.
 To install and verify your accounts:
 
 1. Download [snowsql](https://docs.snowflake.net/manuals/user-guide/snowsql.html);
