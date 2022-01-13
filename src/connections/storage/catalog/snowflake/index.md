@@ -39,8 +39,8 @@ To create a warehouse using the UI:
 To create a warehouse using SQL:
 1. Select the **Create...** button on the Warehouses panel. 
 2. In the Create Warehouse dialog, enter a name for your warehouse and select **Show SQL**.
-3. Copy the following code snippet into your terminal. You can also add a `MIN_CLUSTER_COUNT`, `MAX_CLUSTER_COUNT`, and `SCALING_POLICY`, if needed. 
-<!--- fact-check where you would put this code to create a warehouse using SQL --->
+3. Edit the code snippet in the dialog so that it matches the example below. You can also add `MIN_CLUSTER_COUNT`, `MAX_CLUSTER_COUNT`, and `SCALING_POLICY` values, if needed. 
+4. Click **Select SQL** to copy the SQL, and click **Close** to be returned to the Warehouses panel.  
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
