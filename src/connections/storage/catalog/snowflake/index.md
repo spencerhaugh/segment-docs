@@ -23,24 +23,26 @@ There are six steps to get started using Snowflake with Segment. Make sure that 
 The Segment Snowflake destination requires a Snowflake [virtual warehouse](https://docs.snowflake.net/manuals/user-guide/warehouses.html) to load data into. To avoid conflicts with other regular operations in your cluster, Segment recommends creating a new warehouse just for Segment loads, but this is not mandatory. 
 
 > warning " "
-> Make sure you set `AUTO_SUSPEND` to 10 minutes in the UI (or 600 if using SQL) and enable `AUTO_RESUME` to avoid extra costs.
+> Set `AUTO_SUSPEND` to 10 minutes in the UI (or 600 if using SQL) and enable `AUTO_RESUME` to avoid extra costs. See [Best Practices](#best-practices) for more information. 
 
 To create a warehouse using the UI:
-1. Select the **Create...** button on the Warehouses panel. 
-2. In the Create Warehouse dialog, enter a name for your warehouse and select the following options:
+1. From the Snowflake homepage, select the Warehouses icon.
+2. Select the **Create...** button. 
+3. In the Create Warehouse dialog, enter a name for your warehouse and select the following options:
   -  A size for your warehouse (An X-Small warehouse works for most customers)
   -  Set Auto Suspend to 10
   -  Select **Auto Resume**
   -  You can also select a maximum/minimum number of clusters and a scaling policy, if needed. 
-3. When you've made all of the necessary selections, click **Finish**.
+4. When you've made all of the necessary selections, click **Finish**.
 
 ![](images/create_virtual_warehouse.png)
 
 To create a warehouse using SQL:
-1. Select the **Create...** button on the Warehouses panel. 
-2. In the Create Warehouse dialog, enter a name for your warehouse and select **Show SQL**.
-3. Edit the code snippet in the dialog so that it matches the example below. You can also add `MIN_CLUSTER_COUNT`, `MAX_CLUSTER_COUNT`, and `SCALING_POLICY` values, if needed. 
-4. Click **Select SQL** to copy the SQL, and click **Close** to be returned to the Warehouses panel.  
+1. From the Snowflake homepage, select the Warehouses icon.
+2. Select the **Create...** button.
+3. In the Create Warehouse dialog, enter a name for your warehouse and select **Show SQL**.
+4. Edit the code snippet in the dialog so that it matches the example below. You can also add `MIN_CLUSTER_COUNT`, `MAX_CLUSTER_COUNT`, and `SCALING_POLICY` values, if needed. 
+5. Click **Select SQL** to copy the SQL, and click **Close** and **Cancel** to be returned to the Warehouses panel.  
 
 ```sql
 CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
@@ -54,7 +56,19 @@ CREATE WAREHOUSE "SEGMENT_WAREHOUSE"
 
 The Segment Snowflake destination creates its own schemas and tables, so it's recommended to create a new database for this purpose to avoid name conflicts with existing data.
 
+To create a database using the UI:
+1. From the Snowflake homepage, select the Databases icon.
+2. Select the **Create...** button.
+3. In the Create Database dialog, enter a name for your warehouse.
+4. Click **Finish**. 
+
 ![](images/create_database.png)
+
+To create a database using SQL:
+1. From the Snowflake homepage, select the Warehouses icon.
+2. Select the **Create...** button.
+3. In the Create Warehouse dialog, enter a name for your warehouse and select **Show SQL**.
+4. Click **Select SQL** to copy the SQL, and click **Close** to be returned to the databases panel.
 
 ```sql
 CREATE DATABASE "SEGMENT_EVENTS";
