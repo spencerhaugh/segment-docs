@@ -102,7 +102,7 @@ GRANT CREATE SCHEMA ON DATABASE "SEGMENT_EVENTS" TO ROLE "SEGMENT";
 
 ### Create User for Segment
 
-Finally, you need to create the user that will be connected to Segment. Be sure to use a strong, unique password.
+You also need to create the user that will be connected to Segment. Be sure to use a strong, unique password.
 
 ![](images/create_user_1.png)
 
